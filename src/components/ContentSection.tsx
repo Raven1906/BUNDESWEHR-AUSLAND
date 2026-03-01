@@ -51,8 +51,8 @@ export const Prose = ({ children, className }: { children: React.ReactNode; clas
     className={cn(
       "prose prose-lg max-w-none",
       "text-foreground/90 leading-[1.8]",
-      "[&_h2]:font-serif [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:mt-12 [&_h2]:mb-4",
-      "[&_h3]:font-serif [&_h3]:text-xl [&_h3]:font-medium [&_h3]:text-foreground [&_h3]:mt-8 [&_h3]:mb-3",
+      "[&_h2]:font-sans [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:uppercase [&_h2]:tracking-wider",
+      "[&_h3]:font-sans [&_h3]:text-xl [&_h3]:font-medium [&_h3]:text-foreground [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:uppercase [&_h3]:tracking-wide",
       "[&_p]:mb-4 [&_p]:text-base [&_p]:sm:text-[1.05rem]",
       "[&_blockquote]:border-l-2 [&_blockquote]:border-accent [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground",
       "[&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2",
