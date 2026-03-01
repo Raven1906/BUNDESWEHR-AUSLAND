@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X, Crosshair } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,7 +25,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
           <Link to="/" className="flex items-center gap-2 text-foreground">
-            <Shield className="h-5 w-5 text-accent" />
+            <Crosshair className="h-5 w-5 text-accent" />
             <span className="font-serif text-lg font-semibold tracking-tight">
               Auslandseinsätze
             </span>
@@ -110,7 +110,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <footer className="border-t mt-20">
         <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <div className="flex flex-col items-center gap-3 text-center">
-            <Shield className="h-5 w-5 text-muted-foreground" />
+            <Crosshair className="h-5 w-5 text-muted-foreground" />
             <p className="text-sm text-muted-foreground max-w-lg">
               Eine strukturierte, ausgewogene Analyse zur Bewertung von Auslandseinsätzen 
               der Bundeswehr – aus historischer, politischer und ethischer Perspektive.
