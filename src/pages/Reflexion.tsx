@@ -3,7 +3,7 @@ import { PageHeader, ContentSection } from "@/components/ContentSection";
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, RotateCcw, CheckCircle2 } from "lucide-react";
+import { ArrowRight, RotateCcw, CheckCircle2, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Question {
@@ -89,16 +89,18 @@ const Reflexion = () => {
           {/* Progress */}
           <div className="mb-8">
             <div className="flex items-center justify-between text-sm mb-2">
-              <span className="text-muted-foreground">{answeredCount} von {questions.length} beantwortet</span>
+              <span className="font-tactical tracking-wider text-muted-foreground text-xs">
+                {answeredCount} / {questions.length} Beantwortet
+              </span>
               {answeredCount > 0 && (
-                <button onClick={reset} className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+                <button onClick={reset} className="flex items-center gap-1 text-xs font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
                   <RotateCcw className="h-3.5 w-3.5" /> Zurücksetzen
                 </button>
               )}
             </div>
-            <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+            <div className="h-2 rounded-sm bg-muted overflow-hidden border border-border">
               <motion.div
-                className="h-full rounded-full bg-accent"
+                className="h-full bg-gradient-to-r from-bw-olive to-bw-gold"
                 initial={{ width: 0 }}
                 animate={{ width: `${(answeredCount / questions.length) * 100}%` }}
                 transition={{ duration: 0.3 }}
@@ -118,20 +120,20 @@ const Reflexion = () => {
                 {questions.map((q, i) => (
                   <motion.div
                     key={q.id}
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.02 }}
+                    transition={{ delay: i * 0.025 }}
                     className={cn(
-                      "rounded-lg border p-4 sm:p-5 transition-colors",
-                      answers[q.id] ? "bg-card border-border" : "bg-background border-border"
+                      "rounded border p-4 sm:p-5 transition-all duration-300",
+                      answers[q.id] ? "bg-card border-accent/20 bw-glow" : "bg-background border-border hover:border-accent/10"
                     )}
                   >
                     <div className="flex items-start gap-3 mb-3">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-medium text-muted-foreground">
-                        {q.id}
+                      <span className="bw-badge shrink-0 mt-0.5">
+                        {String(q.id).padStart(2, '0')}
                       </span>
                       <div>
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                        <span className="text-[10px] font-tactical tracking-[0.2em] text-accent">
                           {q.category}
                         </span>
                         <p className="text-sm sm:text-base text-foreground mt-0.5 leading-relaxed">
@@ -139,20 +141,20 @@ const Reflexion = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex gap-2 ml-9">
+                    <div className="flex gap-2 ml-10">
                       {(["pro", "neutral", "contra"] as Answer[]).map((opt) => (
                         <button
                           key={opt}
                           onClick={() => setAnswer(q.id, opt)}
                           className={cn(
-                            "rounded-md px-3 py-1.5 text-xs font-medium transition-all border",
+                            "rounded px-3 py-1.5 text-xs font-tactical tracking-wider transition-all duration-200 border",
                             answers[q.id] === opt
                               ? opt === "pro"
-                                ? "bg-pro text-pro-foreground border-pro"
+                                ? "bg-pro text-pro-foreground border-pro shadow-md"
                                 : opt === "contra"
-                                ? "bg-contra text-contra-foreground border-contra"
-                                : "bg-neutral text-neutral-foreground border-neutral"
-                              : "bg-background text-muted-foreground border-border hover:border-foreground/30"
+                                ? "bg-contra text-contra-foreground border-contra shadow-md"
+                                : "bg-neutral text-neutral-foreground border-neutral shadow-md"
+                              : "bg-background text-muted-foreground border-border hover:border-accent/30 hover:text-foreground"
                           )}
                         >
                           {opt === "pro" ? "Stimme zu" : opt === "contra" ? "Stimme nicht zu" : "Unentschieden"}
@@ -163,19 +165,28 @@ const Reflexion = () => {
                 ))}
 
                 {/* Submit */}
-                <div className="pt-6">
+                <motion.div 
+                  className="pt-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
                   <Button
                     onClick={() => setShowResults(true)}
                     disabled={!allAnswered}
-                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90 h-12 text-base"
+                    className="w-full bg-bw-olive text-bw-gold hover:bg-bw-olive-light h-12 text-sm font-tactical tracking-wider border border-accent/20"
                   >
                     {allAnswered ? (
-                      <>Auswertung anzeigen <ArrowRight className="ml-2 h-4 w-4" /></>
+                      <>
+                        <Target className="mr-2 h-4 w-4" />
+                        Auswertung anzeigen
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </>
                     ) : (
                       `Noch ${questions.length - answeredCount} Fragen offen`
                     )}
                   </Button>
-                </div>
+                </motion.div>
               </motion.div>
             ) : (
               <motion.div
@@ -185,56 +196,91 @@ const Reflexion = () => {
                 className="space-y-6"
               >
                 {/* Profile */}
-                <div className="rounded-lg border-2 border-accent/30 bg-accent/5 p-6 text-center">
+                <div className="rounded border-2 border-accent/30 bg-accent/5 p-6 text-center bw-corner-brackets animate-glow-pulse">
                   <CheckCircle2 className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <h2 className="font-serif text-2xl font-bold text-foreground">
+                  <h2 className="font-tactical text-2xl font-bold text-foreground tracking-wider">
                     {getProfile().label}
                   </h2>
-                  <p className="text-muted-foreground mt-2 max-w-lg mx-auto">
+                  <p className="text-muted-foreground mt-2 max-w-lg mx-auto text-sm">
                     {getProfile().desc}
                   </p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="rounded-lg border bg-pro/5 border-pro/20 p-4 text-center">
-                    <div className="text-2xl font-bold text-pro">{results.pro}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Zustimmung</div>
-                  </div>
-                  <div className="rounded-lg border bg-muted p-4 text-center">
-                    <div className="text-2xl font-bold text-neutral">{results.neutral}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Unentschieden</div>
-                  </div>
-                  <div className="rounded-lg border bg-contra/5 border-contra/20 p-4 text-center">
-                    <div className="text-2xl font-bold text-contra">{results.contra}</div>
-                    <div className="text-xs text-muted-foreground mt-1">Ablehnung</div>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="rounded border bg-pro/5 border-pro/20 p-4 text-center"
+                  >
+                    <div className="text-3xl font-tactical font-bold text-pro">{results.pro}</div>
+                    <div className="text-[10px] font-tactical tracking-wider text-muted-foreground mt-1">Zustimmung</div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="rounded border bg-muted p-4 text-center"
+                  >
+                    <div className="text-3xl font-tactical font-bold text-neutral">{results.neutral}</div>
+                    <div className="text-[10px] font-tactical tracking-wider text-muted-foreground mt-1">Unentschieden</div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="rounded border bg-contra/5 border-contra/20 p-4 text-center"
+                  >
+                    <div className="text-3xl font-tactical font-bold text-contra">{results.contra}</div>
+                    <div className="text-[10px] font-tactical tracking-wider text-muted-foreground mt-1">Ablehnung</div>
+                  </motion.div>
                 </div>
 
                 {/* Bar */}
-                <div className="rounded-lg border p-4">
-                  <div className="text-xs text-muted-foreground mb-2 font-medium">Verteilung</div>
-                  <div className="flex h-4 rounded-full overflow-hidden">
-                    <div className="bg-pro transition-all" style={{ width: `${(results.pro / 25) * 100}%` }} />
-                    <div className="bg-neutral transition-all" style={{ width: `${(results.neutral / 25) * 100}%` }} />
-                    <div className="bg-contra transition-all" style={{ width: `${(results.contra / 25) * 100}%` }} />
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="rounded border p-4"
+                >
+                  <div className="text-[10px] font-tactical tracking-wider text-muted-foreground mb-2">Verteilung</div>
+                  <div className="flex h-5 rounded-sm overflow-hidden border border-border">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: `${(results.pro / 25) * 100}%` }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                      className="bg-pro" 
+                    />
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: `${(results.neutral / 25) * 100}%` }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      className="bg-neutral" 
+                    />
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: `${(results.contra / 25) * 100}%` }}
+                      transition={{ duration: 0.6, delay: 0.7 }}
+                      className="bg-contra" 
+                    />
                   </div>
-                  <div className="flex justify-between text-[10px] text-muted-foreground mt-1.5">
-                    <span>Pro</span>
-                    <span>Contra</span>
+                  <div className="flex justify-between text-[10px] font-tactical tracking-wider text-muted-foreground mt-1.5">
+                    <span>Pro ({Math.round((results.pro / 25) * 100)}%)</span>
+                    <span>Contra ({Math.round((results.contra / 25) * 100)}%)</span>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Disclaimer */}
-                <div className="rounded-lg bg-muted/50 border p-4 text-sm text-muted-foreground">
+                <div className="rounded bg-muted/50 border p-4 text-sm text-muted-foreground">
                   <p>
                     <strong>Hinweis:</strong> Dieses Tool dient der Selbstreflexion und erhebt keinen 
                     wissenschaftlichen Anspruch. Die Einordnung basiert auf Ihren Antworten und soll 
-                    als Denkanstoss dienen – nicht als abschließende Bewertung Ihrer Position.
+                    als Denkanstoß dienen – nicht als abschließende Bewertung Ihrer Position.
                   </p>
                 </div>
 
-                <Button onClick={reset} variant="outline" className="w-full">
+                <Button onClick={reset} variant="outline" className="w-full font-tactical tracking-wider">
                   <RotateCcw className="mr-2 h-4 w-4" /> Nochmal machen
                 </Button>
               </motion.div>
