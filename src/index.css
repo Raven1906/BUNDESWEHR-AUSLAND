@@ -2,85 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 100 8% 95%;
-    --foreground: 100 10% 10%;
+    --background: 80 8% 95%;
+    --foreground: 80 10% 8%;
 
-    --card: 100 6% 92%;
-    --card-foreground: 100 10% 10%;
+    --card: 80 6% 91%;
+    --card-foreground: 80 10% 8%;
 
-    --popover: 100 8% 95%;
-    --popover-foreground: 100 10% 10%;
+    --popover: 80 8% 95%;
+    --popover-foreground: 80 10% 8%;
 
-    --primary: 100 30% 28%;
-    --primary-foreground: 100 8% 95%;
+    --primary: 80 40% 22%;
+    --primary-foreground: 60 20% 95%;
 
-    --secondary: 90 8% 82%;
-    --secondary-foreground: 100 10% 10%;
+    --secondary: 45 12% 82%;
+    --secondary-foreground: 80 10% 8%;
 
-    --muted: 90 6% 88%;
-    --muted-foreground: 100 5% 40%;
+    --muted: 60 6% 86%;
+    --muted-foreground: 80 5% 40%;
 
-    --accent: 45 80% 45%;
-    --accent-foreground: 100 10% 10%;
+    --accent: 45 90% 42%;
+    --accent-foreground: 80 10% 8%;
 
     --destructive: 0 65% 48%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 90 8% 80%;
-    --input: 90 8% 80%;
-    --ring: 100 30% 28%;
+    --border: 60 10% 76%;
+    --input: 60 10% 76%;
+    --ring: 80 40% 22%;
 
     --radius: 0.25rem;
 
-    --sidebar-background: 100 12% 12%;
-    --sidebar-foreground: 90 8% 88%;
-    --sidebar-primary: 45 80% 45%;
-    --sidebar-primary-foreground: 100 10% 10%;
-    --sidebar-accent: 100 10% 18%;
-    --sidebar-accent-foreground: 90 8% 88%;
-    --sidebar-border: 100 8% 22%;
-    --sidebar-ring: 45 80% 45%;
+    --sidebar-background: 80 14% 10%;
+    --sidebar-foreground: 60 8% 88%;
+    --sidebar-primary: 45 90% 42%;
+    --sidebar-primary-foreground: 80 10% 8%;
+    --sidebar-accent: 80 12% 16%;
+    --sidebar-accent-foreground: 60 8% 88%;
+    --sidebar-border: 80 10% 20%;
+    --sidebar-ring: 45 90% 42%;
 
-    --pro: 145 40% 35%;
+    --pro: 145 40% 32%;
     --pro-foreground: 145 40% 96%;
-    --contra: 0 50% 48%;
+    --contra: 0 55% 45%;
     --contra-foreground: 0 50% 97%;
-    --neutral: 45 30% 50%;
+    --neutral: 45 35% 48%;
     --neutral-foreground: 45 30% 97%;
+
+    /* Bundeswehr extended palette */
+    --bw-olive: 80 40% 22%;
+    --bw-olive-light: 80 30% 35%;
+    --bw-khaki: 45 25% 70%;
+    --bw-sand: 40 30% 85%;
+    --bw-tan: 35 35% 75%;
+    --bw-anthracite: 80 5% 18%;
+    --bw-gold: 45 90% 42%;
+    --bw-iron: 80 4% 45%;
+    --bw-field: 95 20% 28%;
+    --bw-camo-dark: 100 25% 15%;
+    --bw-camo-mid: 85 30% 30%;
+    --bw-camo-light: 70 20% 45%;
   }
 
   .dark {
-    --background: 100 10% 7%;
-    --foreground: 90 8% 88%;
+    --background: 80 10% 6%;
+    --foreground: 60 8% 88%;
 
-    --card: 100 10% 11%;
-    --card-foreground: 90 8% 88%;
+    --card: 80 10% 10%;
+    --card-foreground: 60 8% 88%;
 
-    --popover: 100 10% 11%;
-    --popover-foreground: 90 8% 88%;
+    --popover: 80 10% 10%;
+    --popover-foreground: 60 8% 88%;
 
-    --primary: 90 8% 88%;
-    --primary-foreground: 100 10% 7%;
+    --primary: 60 8% 88%;
+    --primary-foreground: 80 10% 6%;
 
-    --secondary: 100 8% 18%;
-    --secondary-foreground: 90 8% 88%;
+    --secondary: 80 8% 16%;
+    --secondary-foreground: 60 8% 88%;
 
-    --muted: 100 8% 18%;
-    --muted-foreground: 100 5% 55%;
+    --muted: 80 8% 16%;
+    --muted-foreground: 80 5% 55%;
 
-    --accent: 45 80% 50%;
-    --accent-foreground: 100 10% 10%;
+    --accent: 45 90% 48%;
+    --accent-foreground: 80 10% 8%;
 
     --destructive: 0 55% 35%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 100 8% 22%;
-    --input: 100 8% 22%;
-    --ring: 90 8% 88%;
+    --border: 80 8% 20%;
+    --input: 80 8% 20%;
+    --ring: 60 8% 88%;
 
     --pro: 145 40% 40%;
     --pro-foreground: 145 40% 96%;
@@ -103,7 +117,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Bebas Neue', 'Arial Black', sans-serif;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 }
@@ -111,5 +125,128 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .font-tactical {
+    font-family: 'Oswald', 'Bebas Neue', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* Bundeswehr tactical decorations */
+@layer components {
+  .bw-stripe-top {
+    position: relative;
+  }
+  .bw-stripe-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      hsl(var(--bw-olive)) 0%, 
+      hsl(var(--bw-gold)) 30%, 
+      hsl(var(--bw-gold)) 70%, 
+      hsl(var(--bw-olive)) 100%
+    );
+  }
+
+  .bw-corner-brackets {
+    position: relative;
+  }
+  .bw-corner-brackets::before,
+  .bw-corner-brackets::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: hsl(var(--bw-gold) / 0.5);
+    pointer-events: none;
+  }
+  .bw-corner-brackets::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  .bw-corner-brackets::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+
+  .bw-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bw-divider::before,
+  .bw-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--bw-gold) / 0.4), transparent);
+  }
+
+  .bw-grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--bw-olive) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--bw-olive) / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bw-scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+  .bw-scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: hsl(var(--bw-gold) / 0.3);
+    animation: scanline 4s ease-in-out infinite;
+  }
+
+  @keyframes scanline {
+    0%, 100% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .bw-glow {
+    box-shadow: 
+      0 0 15px -5px hsl(var(--bw-gold) / 0.15),
+      0 0 30px -10px hsl(var(--bw-olive) / 0.1);
+  }
+
+  .bw-text-glow {
+    text-shadow: 0 0 20px hsl(var(--bw-gold) / 0.3);
+  }
+
+  /* Tactical number badge */
+  .bw-badge {
+    @apply inline-flex items-center justify-center;
+    @apply h-7 w-7 rounded-sm;
+    @apply text-xs font-bold;
+    background: hsl(var(--bw-olive));
+    color: hsl(var(--bw-gold));
+    font-family: 'Oswald', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* Military stat card */
+  .bw-stat {
+    @apply rounded border p-4 text-center;
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--bw-sand) / 0.3));
+    border-color: hsl(var(--bw-khaki) / 0.5);
   }
 }

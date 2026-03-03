@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, InfoBox, TimelineItem, MilitaryDivider, StatCard } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -10,6 +10,17 @@ const Geschichte = () => (
       title="Historischer Kontext"
       subtitle="Von der reinen Verteidigungsarmee zur internationalen Einsatztruppe – der Wandel der Bundeswehr seit 1990."
     />
+
+    {/* Key stats */}
+    <div className="border-b bg-card/50">
+      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+        <div className="grid grid-cols-3 gap-3">
+          <StatCard value="1955" label="Gründung Bundeswehr" />
+          <StatCard value="1999" label="Erster Kampfeinsatz" />
+          <StatCard value="2022" label="Zeitenwende" />
+        </div>
+      </div>
+    </div>
 
     <div className="py-12 sm:py-16">
       <ContentSection>
@@ -28,6 +39,13 @@ const Geschichte = () => (
             was international als „Scheckbuch-Diplomatie" kritisiert wurde. Dieser Vorwurf wurde zu 
             einem wichtigen Katalysator für die spätere Neuausrichtung.
           </p>
+          <p>
+            Die innenpolitische Debatte war geprägt von zwei Lagern: Auf der einen Seite standen 
+            diejenigen, die in der neuen geopolitischen Lage eine Chance sahen, Deutschland als 
+            verantwortungsvollen internationalen Akteur zu positionieren. Auf der anderen Seite 
+            warnten Kritiker vor einem Rückfall in militaristisches Denken und verwiesen auf die 
+            historische Verantwortung Deutschlands.
+          </p>
 
           <h2>Die Jugoslawienkriege: Der entscheidende Bruch</h2>
           <p>
@@ -44,6 +62,13 @@ const Geschichte = () => (
             auch ‚Nie wieder Auschwitz'."
           </p>
 
+          <InfoBox variant="warning" title="Schlüsselzitat">
+            <p className="italic text-base">
+              „Ich habe nicht nur ‚Nie wieder Krieg' gelernt, sondern auch ‚Nie wieder Auschwitz'."
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground">— Joschka Fischer, Bundesaußenminister, 1999</p>
+          </InfoBox>
+
           <h2>Afghanistan: Der längste Einsatz</h2>
           <p>
             Nach den Terroranschlägen vom 11. September 2001 beschloss der Bundestag die Beteiligung 
@@ -58,6 +83,12 @@ const Geschichte = () => (
             von Kunduz 2009, bei dem bis zu 142 Menschen starben – darunter viele Zivilisten –, 
             erzwang eine ehrlichere Debatte.
           </p>
+          <p>
+            Die Evakuierungsmission im August 2021, als die Taliban Kabul einnahmen, wurde zum 
+            Symbol des Scheiterns: Tausende lokale Helfer und ihre Familien konnten nicht 
+            rechtzeitig ausgeflogen werden. Die chaotischen Szenen am Flughafen Kabul prägten 
+            sich in das kollektive Gedächtnis ein.
+          </p>
 
           <h2>Bündnisverpflichtungen und NATO</h2>
           <p>
@@ -65,6 +96,12 @@ const Geschichte = () => (
             Auslandseinsätze. Der Bündnisfall nach Artikel 5 wurde erstmals nach dem 11. September 
             2001 ausgerufen. Die NATO-Mitgliedschaft verpflichtet Deutschland zur Solidarität – 
             auch wenn der Umfang der Beteiligung politisch verhandelbar bleibt.
+          </p>
+          <p>
+            Das 2%-Ziel der NATO – wonach jedes Mitglied 2% seines BIP für Verteidigung ausgeben 
+            soll – war jahrelang ein Streitpunkt. Deutschland verfehlt dieses Ziel seit Jahrzehnten, 
+            was zu Kritik insbesondere aus den USA führte. Erst die Zeitenwende 2022 brachte 
+            eine Kurskorrektur.
           </p>
           <p>
             Darüber hinaus hat die Europäische Union eigene sicherheitspolitische Strukturen 
@@ -82,7 +119,26 @@ const Geschichte = () => (
             Stabilisierungsmissionen in fernen Krisenregionen, sondern um die Verteidigung 
             der europäischen Sicherheitsordnung selbst.
           </p>
+          <p>
+            Die Lieferung schwerer Waffen an die Ukraine, die Stationierung zusätzlicher 
+            Truppen in den baltischen Staaten und die verstärkte Präsenz an der NATO-Ostflanke 
+            markieren einen historischen Paradigmenwechsel in der deutschen Sicherheitspolitik.
+          </p>
         </Prose>
+      </ContentSection>
+
+      <MilitaryDivider label="Zeitstrahl" />
+
+      <ContentSection>
+        <TimelineItem year="1955" title="Gründung der Bundeswehr" description="Aufstellung als Verteidigungsarmee im Rahmen der NATO. Keine Auslandseinsätze vorgesehen." />
+        <TimelineItem year="1990/91" title="Zweiter Golfkrieg" description="Deutschland beteiligt sich finanziell, aber nicht militärisch. Vorwurf der ‚Scheckbuch-Diplomatie'." />
+        <TimelineItem year="1992–95" title="Jugoslawienkriege" description="Humanitäre Hilfe und Überwachung. Srebrenica 1995 als Wendepunkt der Debatte." />
+        <TimelineItem year="1994" title="BVerfG-Urteil" description="Bundesverfassungsgericht erklärt Auslandseinsätze im Rahmen kollektiver Sicherheit für zulässig." />
+        <TimelineItem year="1999" title="Kosovo-Krieg" description="Erster Kampfeinsatz der Bundeswehr. NATO-Luftangriffe auf Serbien unter rot-grüner Regierung." />
+        <TimelineItem year="2001–2021" title="Afghanistan (ISAF/Resolute Support)" description="Längster Einsatz: 59 Gefallene, Kunduz-Bombardement 2009, chaotischer Abzug 2021." />
+        <TimelineItem year="2013–2023" title="Mali (MINUSMA)" description="Stabilisierungseinsatz in der Sahelzone. Beendigung auf Druck der malischen Militärjunta." />
+        <TimelineItem year="2015–heute" title="Anti-IS-Koalition" description="Aufklärung und Luftbetankung über Syrien und Irak." />
+        <TimelineItem year="2022" title="Zeitenwende" description="100 Milliarden Sondervermögen, verstärkte NATO-Ostflanke, Waffenlieferungen an die Ukraine." />
       </ContentSection>
 
       <ContentSection className="mt-8">
@@ -100,10 +156,10 @@ const Geschichte = () => (
       {/* Navigation */}
       <ContentSection className="mt-12">
         <div className="flex justify-between">
-          <Link to="/" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
             <ArrowLeft className="h-4 w-4" /> Einführung
           </Link>
-          <Link to="/pro" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/pro" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
             Pro-Argumente <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
