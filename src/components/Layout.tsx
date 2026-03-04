@@ -148,7 +148,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <Shield className="h-3 w-3 text-muted-foreground/40" />
             </div>
             <p className="text-[10px] font-tactical tracking-[0.2em] text-muted-foreground/50">
-              Keine Parteinahme · Nur Argumente · Ausgewogen
+              MADE BY BEN/MORITZ 
             </p>
           </div>
         </div>
