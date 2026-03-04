@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronRight, Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,72 +15,109 @@ const navItems = [
   { path: "/reflexion", label: "Reflexion", highlight: true },
 ];
 
-const IronCross = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={className} fill="currentColor">
-    <polygon points="35,0 65,0 65,35 100,35 100,65 65,65 65,100 35,100 35,65 0,65 0,35 35,35" />
-    <polygon points="38,3 62,3 62,38 97,38 97,62 62,62 62,97 38,97 38,62 3,62 3,38 38,38" fill="hsl(var(--background))" />
-    <polygon points="40,5 60,5 60,40 95,40 95,60 60,60 60,95 40,95 40,60 5,60 5,40 40,40" fill="currentColor" />
-  </svg>
-);
-
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+  }, [isDark]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Get current chapter index
+  const currentIndex = navItems.findIndex(n => n.path === location.pathname);
 
   return (
-    <div className="min-h-screen bg-background bw-grid-bg">
-      {/* Top military stripe */}
-      <div className="h-1 bg-gradient-to-r from-bw-olive via-bw-gold to-bw-olive" />
+    <div className="min-h-screen bg-background animated-bg">
+      {/* Accent top line */}
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent" />
 
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
-          <Link to="/" className="flex items-center gap-2.5 text-foreground group">
-            <IronCross className="h-6 w-6 text-accent transition-transform group-hover:scale-110" />
+      <header className={cn(
+        "sticky top-0 z-50 transition-all duration-300",
+        scrolled 
+          ? "bg-background/80 backdrop-blur-xl border-b shadow-sm" 
+          : "bg-transparent"
+      )}>
+        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="h-9 w-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                <span className="text-accent font-heading font-bold text-lg">B</span>
+              </div>
+              <div className="absolute -bottom-0.5 -right-0.5 glow-dot scale-75" />
+            </div>
             <div className="flex flex-col leading-none">
-              <span className="font-tactical text-sm font-semibold tracking-[0.15em]">
+              <span className="font-heading text-sm font-semibold tracking-tight text-foreground">
                 Bundeswehr
               </span>
-              <span className="text-[9px] font-tactical tracking-[0.2em] text-muted-foreground">
+              <span className="text-[11px] text-muted-foreground">
                 Auslandseinsätze
               </span>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-0.5 lg:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map((item, i) => (
               <motion.div
                 key={item.path}
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ delay: i * 0.04 }}
               >
                 <Link
                   to={item.path}
                   className={cn(
-                    "rounded px-3 py-1.5 text-xs font-tactical tracking-wider transition-all duration-200",
+                    "relative rounded-lg px-3 py-2 text-sm transition-all duration-200",
                     location.pathname === item.path
-                      ? "bg-bw-olive text-bw-gold shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                      ? "text-accent font-medium"
+                      : "text-muted-foreground hover:text-foreground",
                     item.highlight && location.pathname !== item.path &&
-                      "text-accent hover:text-accent animate-border-pulse border border-accent/20"
+                      "text-accent/80 hover:text-accent"
                   )}
                 >
                   {item.label}
+                  {location.pathname === item.path && (
+                    <motion.div
+                      layoutId="nav-indicator"
+                      className="absolute inset-0 rounded-lg bg-accent/10 border border-accent/20"
+                      transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                    />
+                  )}
                 </Link>
               </motion.div>
             ))}
+            <button
+              onClick={() => setIsDark(!isDark)}
+              className="ml-2 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            >
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
           </nav>
 
-          {/* Mobile toggle */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menü"
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          {/* Mobile */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <button
+              onClick={() => setIsDark(!isDark)}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground"
+            >
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile nav */}
@@ -90,13 +127,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden border-t lg:hidden"
+              className="overflow-hidden border-t bg-background/95 backdrop-blur-xl lg:hidden"
             >
               <div className="mx-auto max-w-5xl space-y-1 px-4 py-3">
                 {navItems.map((item, i) => (
                   <motion.div
                     key={item.path}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.04 }}
                   >
@@ -104,15 +141,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       to={item.path}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "block rounded px-3 py-2 text-sm font-tactical tracking-wider transition-colors",
+                        "flex items-center justify-between rounded-lg px-4 py-3 text-sm transition-colors",
                         location.pathname === item.path
-                          ? "bg-bw-olive text-bw-gold"
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted",
-                        item.highlight && location.pathname !== item.path &&
-                          "text-accent hover:text-accent"
+                          ? "bg-accent/10 text-accent font-medium"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
                       )}
                     >
                       {item.label}
+                      <ChevronRight className="h-4 w-4 opacity-40" />
                     </Link>
                   </motion.div>
                 ))}
@@ -122,33 +158,35 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </AnimatePresence>
       </header>
 
-      {/* Main content */}
-      <main>
+      {/* Main */}
+      <main className="relative z-10">
         <motion.div
           key={location.pathname}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           {children}
         </motion.div>
       </main>
 
       {/* Footer */}
-      <footer className="border-t mt-20 bg-card/50">
-        <div className="h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-        <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-          <div className="flex flex-col items-center gap-4 text-center">
-            <IronCross className="h-8 w-8 text-muted-foreground/40" />
-            <p className="text-sm text-muted-foreground max-w-lg">
-              Meine strukturierte, ausgewogene Analyse zur Bewertung von Auslandseinsätzen 
-              der Bundeswehr.
-            </p>
-            <div className="bw-divider w-48">
-              <Shield className="h-3 w-3 text-muted-foreground/40" />
+      <footer className="relative z-10 border-t mt-24">
+        <div className="h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+          <div className="flex flex-col items-center gap-6 text-center">
+            <div className="h-10 w-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
+              <span className="text-accent font-heading font-bold text-xl">B</span>
             </div>
-            <p className="text-[10px] font-tactical tracking-[0.2em] text-muted-foreground/50">
-              MADE BY BEN/MORITZ 
+            <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
+              Eine strukturierte, ausgewogene Analyse zur Bewertung von Auslandseinsätzen 
+              der Bundeswehr – aus historischer, politischer und ethischer Perspektive.
+            </p>
+            <div className="modern-divider w-48">
+              <div className="glow-dot scale-50" />
+            </div>
+            <p className="text-xs text-muted-foreground/50 font-mono">
+              MADE BY BEN & MORITZ
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox, MilitaryDivider, StatCard } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, InfoBox, ModernDivider, StatCard } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -8,13 +8,12 @@ const Folgen = () => (
     <PageHeader
       chapter="Kapitel 6"
       title="Politische & gesellschaftliche Folgen"
-      subtitle="Wie Auslandseinsätze die deutsche Innenpolitik, die öffentliche Meinung und die sicherheitspolitische Identität prägen."
+      subtitle="Wie Auslandseinsätze die deutsche Innenpolitik, die öffentliche Meinung und die sicherheitspolitische Identität nachhaltig prägen."
     />
 
-    {/* Opinion stats */}
-    <div className="border-b bg-card/50">
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
-        <div className="grid grid-cols-3 gap-3">
+    <div className="border-b border-border/50">
+      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+        <div className="grid grid-cols-3 gap-4">
           <StatCard value="~60%" label="Gegen Kampfeinsätze" />
           <StatCard value="~70%" label="Für humanitäre Hilfe" />
           <StatCard value="2019" label="Erster Tag des Veteranen" />
@@ -22,7 +21,7 @@ const Folgen = () => (
       </div>
     </div>
 
-    <div className="py-12 sm:py-16">
+    <div className="py-14 sm:py-20">
       <ContentSection>
         <Prose>
           <h2>Einfluss auf die Innenpolitik</h2>
@@ -46,17 +45,25 @@ const Folgen = () => (
             vom Kosovo über Afghanistan bis zum Anti-IS-Einsatz. Diese Spannung zwischen 
             Friedenspartei und Regierungsverantwortung prägt die Partei bis heute.
           </p>
+          <p>
+            Auch die CDU/CSU hat ihre Position im Laufe der Jahrzehnte angepasst. Unter 
+            Helmut Kohl war die Haltung noch von Vorsicht geprägt, unter Angela Merkel 
+            wurden Auslandseinsätze zunehmend zur Normalität – ohne dass eine grundlegende 
+            strategische Debatte geführt wurde. Die Zeitenwende 2022 hat dann parteiübergreifend 
+            eine neue Dynamik ausgelöst.
+          </p>
 
           <h2>Öffentliche Meinung</h2>
           <p>
             Die deutsche Bevölkerung steht Auslandseinsätzen überwiegend skeptisch gegenüber. 
             Umfragen zeigen konstant, dass eine Mehrheit militärische Interventionen ablehnt – 
             insbesondere Kampfeinsätze. Humanitäre Hilfseinsätze und Friedenssicherung genießen 
-            dagegen mehr Zustimmung.
+            dagegen mehr Zustimmung. Diese Differenzierung zeigt, dass die Öffentlichkeit durchaus 
+            in der Lage ist, zwischen verschiedenen Einsatztypen zu unterscheiden.
           </p>
 
           <InfoBox title="Umfrageergebnisse (Zusammenfassung)">
-            <ul className="list-disc pl-4 space-y-1">
+            <ul className="list-disc pl-4 space-y-1.5">
               <li>Ca. 60% der Deutschen lehnen Kampfeinsätze grundsätzlich ab</li>
               <li>Ca. 70% befürworten humanitäre Hilfseinsätze</li>
               <li>Die Zustimmung sinkt deutlich, wenn eigene Verluste bekannt werden</li>
@@ -81,7 +88,8 @@ const Folgen = () => (
             Die Debatte um Auslandseinsätze ist im Kern eine Identitätsdebatte: Wer wollen 
             wir als Land sein? Ein „Friedensstaat", der sich auf Diplomatie und Entwicklungshilfe 
             konzentriert? Oder eine „Gestaltungsmacht", die bereit ist, auch militärisch für 
-            ihre Werte einzutreten?
+            ihre Werte einzutreten? Diese Frage lässt sich nicht abstrakt beantworten – sie 
+            wird durch jede Einsatzentscheidung aufs Neue verhandelt.
           </p>
           <p>
             Lange dominierte in Deutschland das Konzept der „Zivilmacht": Ein Land, das 
@@ -140,19 +148,22 @@ const Folgen = () => (
             Die Aussetzung der Wehrpflicht 2011 hat zudem dazu geführt, dass immer 
             weniger Deutsche eine persönliche Verbindung zur Bundeswehr haben. Die 
             Armee wird zunehmend als abstraktes Instrument staatlicher Politik 
-            wahrgenommen – nicht als Teil der eigenen Lebenswelt.
+            wahrgenommen – nicht als Teil der eigenen Lebenswelt. Diese wachsende 
+            Distanz zwischen Gesellschaft und Militär ist ein Phänomen, das in 
+            vielen westlichen Demokratien zu beobachten ist, in Deutschland aber 
+            besonders ausgeprägt.
           </p>
         </Prose>
       </ContentSection>
 
-      <MilitaryDivider />
+      <ModernDivider />
 
       <ContentSection className="mt-4">
         <div className="flex justify-between">
-          <Link to="/ethik" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/ethik" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             <ArrowLeft className="h-4 w-4" /> Ethik
           </Link>
-          <Link to="/fazit" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/fazit" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             Fazit <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

@@ -1,18 +1,20 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox, MilitaryDivider } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, InfoBox, ModernDivider } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ArgumentHeader = ({ num, title }: { num: number; title: string }) => (
   <motion.div 
-    initial={{ opacity: 0, x: -15 }}
+    initial={{ opacity: 0, x: -12 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    className="flex items-center gap-3 mt-14 mb-4"
+    className="flex items-center gap-3 mt-14 mb-5"
   >
-    <span className="bw-badge">{String(num).padStart(2, '0')}</span>
-    <h2 className="font-tactical text-2xl font-semibold text-foreground tracking-[0.12em] !border-0 !pl-0 !mt-0 !mb-0">{title}</h2>
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-pro/10 border border-pro/20 text-pro text-sm font-heading font-bold">
+      {String(num).padStart(2, '0')}
+    </span>
+    <h2 className="font-heading text-2xl font-bold text-foreground !border-0 !pl-0 !mt-0 !mb-0">{title}</h2>
   </motion.div>
 );
 
@@ -21,10 +23,10 @@ const ProArgumente = () => (
     <PageHeader
       chapter="Kapitel 3"
       title="Argumente für Auslandseinsätze"
-      subtitle="Sieben zentrale Argumente, die für eine aktive Beteiligung Deutschlands an internationalen Militäreinsätzen sprechen."
+      subtitle="Sieben zentrale Argumente, die für eine aktive Beteiligung Deutschlands an internationalen Militäreinsätzen sprechen – jeweils mit Gegeneinwänden."
     />
 
-    <div className="py-12 sm:py-16">
+    <div className="py-14 sm:py-20">
       <ContentSection>
         <Prose>
           <ArgumentHeader num={1} title="Internationale Verantwortung" />
@@ -39,7 +41,8 @@ const ProArgumente = () => (
             Diese Verantwortung ergibt sich nicht nur aus der wirtschaftlichen Stärke, sondern auch 
             aus der historischen Erfahrung. Gerade weil Deutschland weiß, was Krieg bedeutet, hat 
             es eine besondere Verpflichtung, sich für Frieden einzusetzen – auch wenn das 
-            militärische Mittel einschließen kann.
+            militärische Mittel einschließen kann. Die Argumentation lautet: Wer die Mittel hat 
+            zu helfen und es nicht tut, macht sich mitschuldig am Leid anderer.
           </p>
           <InfoBox variant="pro" title="Beispiel: MINUSMA Mali">
             <p>Die deutsche Beteiligung an der UN-Mission MINUSMA in Mali (2013–2023) war 
@@ -51,20 +54,24 @@ const ProArgumente = () => (
             <strong>Gegenkritik:</strong> Verantwortung lässt sich auch durch Diplomatie, 
             Entwicklungshilfe und wirtschaftliche Zusammenarbeit wahrnehmen. Militärische 
             Beteiligung ist nicht die einzige Form internationalen Engagements. Die Frage 
-            ist, ob sie die wirksamste ist.
+            ist, ob sie die wirksamste ist – oder ob die Ressourcen anderweitig besser 
+            eingesetzt wären.
           </p>
 
           <ArgumentHeader num={2} title="Stabilisierung von Krisenregionen" />
           <p>
             Instabile Regionen bedrohen nicht nur die lokale Bevölkerung, sondern haben 
             weitreichende Auswirkungen – Flüchtlingsbewegungen, Terrorismus, organisierte 
-            Kriminalität. Militärische Stabilisierungseinsätze können den Rahmen schaffen, 
-            in dem ziviler Wiederaufbau und politische Lösungen möglich werden.
+            Kriminalität und die Unterbrechung von Handelsrouten. Militärische Stabilisierungseinsätze 
+            können den Rahmen schaffen, in dem ziviler Wiederaufbau und politische Lösungen 
+            möglich werden.
           </p>
           <p>
             Der Balkan ist ein Beispiel, in dem militärische Präsenz tatsächlich zur Stabilisierung 
             beigetragen hat. Die KFOR-Mission im Kosovo hat seit 1999 einen erneuten Ausbruch 
-            großflächiger Gewalt verhindert und den Aufbau staatlicher Strukturen ermöglicht.
+            großflächiger Gewalt verhindert und den Aufbau staatlicher Strukturen ermöglicht. 
+            Ohne die internationale militärische Präsenz wäre ein erneuter Ausbruch ethnischer 
+            Gewalt sehr wahrscheinlich gewesen.
           </p>
           <p>
             <strong>Gegenkritik:</strong> Die Erfahrung aus Afghanistan und Libyen zeigt, 
@@ -77,18 +84,20 @@ const ProArgumente = () => (
             Die NATO basiert auf dem Prinzip kollektiver Verteidigung. Wenn Deutschland die 
             Solidarität seiner Bündnispartner erwartet – etwa im Rahmen der nuklearen 
             Schutzgarantie –, muss es bereit sein, selbst Solidarität zu leisten. 
-            Trittbrettfahren untergräbt die Glaubwürdigkeit des Bündnisses.
+            Trittbrettfahren untergräbt die Glaubwürdigkeit des Bündnisses und letztlich 
+            auch die eigene Sicherheit.
           </p>
           <p>
             Das Argument der Bündnisfähigkeit hat nach der Zeitenwende 2022 an Gewicht gewonnen. 
             Die Stationierung deutscher Truppen in Litauen als Teil der NATO Enhanced Forward 
             Presence zeigt, dass Deutschland zunehmend bereit ist, militärische Verantwortung 
-            an der Ostflanke zu übernehmen.
+            an der Ostflanke zu übernehmen. Diese Bereitschaft ist ein Signal an Verbündete 
+            und potenzielle Aggressoren gleichermaßen.
           </p>
           <p>
             <strong>Gegenkritik:</strong> Bündnissolidarität darf nicht zum Automatismus 
             werden. Jeder Einsatz muss individuell bewertet werden – blinde Gefolgschaft 
-            ist kein Zeichen von Stärke.
+            ist kein Zeichen von Stärke, sondern von mangelnder strategischer Eigenständigkeit.
           </p>
 
           <ArgumentHeader num={4} title="Terrorismusbekämpfung" />
@@ -96,13 +105,15 @@ const ProArgumente = () => (
             Terroristische Netzwerke operieren global. Die Bekämpfung von Organisationen wie 
             dem IS oder Al-Qaida erfordert auch militärische Mittel – insbesondere dort, wo 
             staatliche Strukturen zusammengebrochen sind und lokale Sicherheitskräfte 
-            überfordert sind.
+            überfordert sind. Terrorismus macht an keinen Grenzen halt, und die Bedrohung 
+            betrifft auch Deutschland direkt.
           </p>
           <InfoBox variant="pro" title="Beispiel: Anti-IS-Koalition">
             <p>Die Bundeswehr beteiligte sich ab 2015 am Anti-IS-Einsatz in Syrien und 
             Irak mit Tornado-Aufklärungsflugzeugen und Tankflugzeugen. Der IS verlor 
             bis 2019 sein gesamtes Territorium – eine Fläche, die zeitweise der Größe 
-            Großbritanniens entsprach.</p>
+            Großbritanniens entsprach. Der Beitrag der Koalition war militärisch erfolgreich, 
+            auch wenn die politische Lage in der Region instabil bleibt.</p>
           </InfoBox>
           <p>
             <strong>Gegenkritik:</strong> Militärische Terrorismusbekämpfung kann zu 
@@ -117,7 +128,7 @@ const ProArgumente = () => (
             Konzept der Vereinten Nationen. Es besagt, dass die internationale Gemeinschaft 
             eingreifen darf (und soll), wenn ein Staat seine eigene Bevölkerung nicht schützen 
             kann oder will. Völkermord, Kriegsverbrechen und ethnische Säuberungen rechtfertigen 
-            internationales Handeln.
+            internationales Handeln – notfalls auch militärisches.
           </p>
           <p>
             Das Konzept wurde 2005 von der UN-Generalversammlung angenommen und erstmals 
@@ -136,7 +147,7 @@ const ProArgumente = () => (
             Frühzeitige Intervention kann verhindern, dass lokale Konflikte eskalieren und 
             zu regionalen Flächenbränden werden. Die Kosten einer rechtzeitigen 
             Friedenssicherung sind in der Regel deutlich geringer als die Kosten eines 
-            ausgewachsenen Krieges.
+            ausgewachsenen Krieges – sowohl finanziell als auch in Menschenleben.
           </p>
           <p>
             Eine Studie der UN schätzt, dass jeder Dollar, der in Konfliktprävention 
@@ -170,7 +181,7 @@ const ProArgumente = () => (
         </Prose>
       </ContentSection>
 
-      <MilitaryDivider />
+      <ModernDivider />
 
       <ContentSection>
         <InfoBox variant="pro" title="Zusammenfassung">
@@ -179,17 +190,17 @@ const ProArgumente = () => (
             von Bündnissolidarität und die moralische Pflicht zum Schutz von Zivilisten. Sie 
             argumentieren, dass militärische Mittel – unter den richtigen Bedingungen – ein 
             legitimes Instrument der Friedenssicherung sind. Keines dieser Argumente ist ohne 
-            berechtigte Gegeneinwände – die im nächsten Kapitel behandelt werden.
+            berechtigte Gegeneinwände – die im nächsten Kapitel ausführlich behandelt werden.
           </p>
         </InfoBox>
       </ContentSection>
 
       <ContentSection className="mt-12">
         <div className="flex justify-between">
-          <Link to="/geschichte" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/geschichte" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             <ArrowLeft className="h-4 w-4" /> Geschichte
           </Link>
-          <Link to="/contra" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/contra" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             Contra-Argumente <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

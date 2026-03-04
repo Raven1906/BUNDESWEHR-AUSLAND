@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox, MilitaryDivider } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, InfoBox, ModernDivider, QuoteBlock } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -8,10 +8,10 @@ const Fazit = () => (
     <PageHeader
       chapter="Kapitel 7"
       title="Fazit & offene Fragen"
-      subtitle="Kein einfaches ‚Gut' oder ‚Schlecht' – sondern differenzierte Bedingungen und Reflexionsfragen."
+      subtitle="Kein einfaches ‚Gut' oder ‚Schlecht' – sondern differenzierte Bedingungen, Lehren aus drei Jahrzehnten und Reflexionsfragen für die eigene Meinungsbildung."
     />
 
-    <div className="py-12 sm:py-16">
+    <div className="py-14 sm:py-20">
       <ContentSection>
         <Prose>
           <h2>Eine Bilanz der Ambivalenz</h2>
@@ -19,14 +19,15 @@ const Fazit = () => (
             Wer sich ehrlich mit dem Thema Auslandseinsätze auseinandersetzt, kommt nicht 
             umhin festzustellen: Es gibt keine einfache Antwort. Weder die pauschale 
             Ablehnung noch die bedingungslose Befürwortung militärischer Interventionen 
-            hält einer differenzierten Prüfung stand.
+            hält einer differenzierten Prüfung stand. Die Realität ist komplexer als 
+            jede Schlagzeile, jeder Parteibeschluss und jede Talkshow-Debatte.
           </p>
           <p>
             Die Bilanz der bisherigen Einsätze ist gemischt. Kosovo gilt als relativ 
             erfolgreich, Afghanistan als gescheitert, Mali als abgebrochen, die 
             Anti-IS-Koalition als militärisch erfolgreich bei politisch offenem Ausgang. 
             Jeder Einsatz hat seine eigene Geschichte, seine eigenen Bedingungen und 
-            seine eigenen Lehren.
+            seine eigenen Lehren. Pauschale Urteile werden dieser Vielfalt nicht gerecht.
           </p>
           <p>
             Was diese Analyse zeigt: Die Qualität der Debatte ist entscheidend. Wer 
@@ -76,21 +77,28 @@ const Fazit = () => (
 
           <h2>Lehren aus 30 Jahren Einsatzgeschichte</h2>
           <p>
-            Aus drei Jahrzehnten Auslandseinsätzen lassen sich zentrale Lehren ziehen:
+            Aus drei Jahrzehnten Auslandseinsätzen lassen sich zentrale Lehren ziehen, die 
+            für zukünftige Entscheidungen relevant sind:
           </p>
           <ul>
             <li><strong>Ehrlichkeit:</strong> Die Einsatzrealität muss offen kommuniziert werden. 
             Die jahrelange Weigerung, den Afghanistan-Einsatz als Krieg zu bezeichnen, hat das 
-            Vertrauen beschädigt.</li>
+            Vertrauen beschädigt und die notwendige öffentliche Debatte verhindert.</li>
             <li><strong>Bescheidenheit:</strong> Die Grenzen dessen, was militärische Intervention 
             erreichen kann, müssen realistisch eingeschätzt werden. Nation-Building von außen 
-            funktioniert selten.</li>
+            funktioniert selten – diese Erkenntnis sollte künftige Mandatierungen beeinflussen.</li>
             <li><strong>Verantwortung:</strong> Wer interveniert, übernimmt Verantwortung – auch 
-            für die langfristigen Folgen. Ein überstürzter Abzug ist ethisch nicht vertretbar.</li>
+            für die langfristigen Folgen. Ein überstürzter Abzug ist ethisch nicht vertretbar 
+            und untergräbt die Glaubwürdigkeit künftiger Einsätze.</li>
             <li><strong>Integration:</strong> Militärische Mittel sind nur ein Element. Ohne 
             diplomatische, wirtschaftliche und zivilgesellschaftliche Begleitung bleiben 
-            Einsätze wirkungslos.</li>
+            Einsätze wirkungslos oder kontraproduktiv.</li>
           </ul>
+
+          <QuoteBlock
+            quote="Wer den Frieden will, muss den Frieden vorbereiten – nicht den Krieg."
+            author="Deutsches Sprichwort, neu interpretiert"
+          />
 
           <h2>Reflexionsfragen für die eigene Meinungsbildung</h2>
           <p>
@@ -121,19 +129,21 @@ const Fazit = () => (
             Argumente, hinterfragen Sie sie, entwickeln Sie Ihre eigene Position – und 
             überprüfen Sie sie immer wieder an neuen Fakten und Entwicklungen. Denn eine 
             Demokratie lebt davon, dass ihre Bürgerinnen und Bürger sich informiert und 
-            differenziert mit den großen Fragen der Politik auseinandersetzen.
+            differenziert mit den großen Fragen der Politik auseinandersetzen. Das gilt 
+            für die Frage der Auslandseinsätze ebenso wie für alle anderen Bereiche, in 
+            denen weitreichende Entscheidungen getroffen werden müssen.
           </p>
         </Prose>
       </ContentSection>
 
-      <MilitaryDivider />
+      <ModernDivider />
 
       <ContentSection className="mt-4">
         <div className="flex justify-between">
-          <Link to="/folgen" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/folgen" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             <ArrowLeft className="h-4 w-4" /> Folgen
           </Link>
-          <Link to="/reflexion" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-accent font-medium hover:text-accent/80 transition-colors">
+          <Link to="/reflexion" className="flex items-center gap-2 text-sm text-accent font-medium hover:text-accent/80 transition-colors">
             Zum Reflexionstool <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
