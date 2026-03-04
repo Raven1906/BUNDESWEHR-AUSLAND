@@ -141,8 +141,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex flex-col items-center gap-4 text-center">
             <IronCross className="h-8 w-8 text-muted-foreground/40" />
             <p className="text-sm text-muted-foreground max-w-lg">
-              Eine strukturierte, ausgewogene Analyse zur Bewertung von Auslandseinsätzen 
-              der Bundeswehr – aus historischer, politischer und ethischer Perspektive.
+              Meine strukturierte, ausgewogene Analyse zur Bewertung von Auslandseinsätzen 
+              der Bundeswehr.
             </p>
             <div className="bw-divider w-48">
               <Shield className="h-3 w-3 text-muted-foreground/40" />
