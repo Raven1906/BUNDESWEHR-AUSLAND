@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox, MilitaryDivider } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, InfoBox, ModernDivider, QuoteBlock } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
@@ -8,10 +8,10 @@ const Ethik = () => (
     <PageHeader
       chapter="Kapitel 5"
       title="Ethische Bewertung"
-      subtitle="Zwischen ‚Nie wieder Krieg' und ‚Nie wieder wegsehen' – die moralischen Dilemmata militärischer Interventionen."
+      subtitle="Zwischen ‚Nie wieder Krieg' und ‚Nie wieder wegsehen' – die moralischen Dilemmata militärischer Interventionen und ihre philosophischen Grundlagen."
     />
 
-    <div className="py-12 sm:py-16">
+    <div className="py-14 sm:py-20">
       <ContentSection>
         <Prose>
           <h2>Verantwortung versus Zurückhaltung</h2>
@@ -26,14 +26,17 @@ const Ethik = () => (
           <p>
             Beide Prinzipien sind für sich genommen richtig – und doch stehen sie in einem 
             unauflösbaren Spannungsverhältnis. Die Kunst der politischen Ethik liegt darin, 
-            im konkreten Einzelfall abzuwägen, welches Prinzip schwerer wiegt.
+            im konkreten Einzelfall abzuwägen, welches Prinzip schwerer wiegt. Es gibt keine 
+            Formel, die diese Abwägung automatisiert – sie erfordert Urteilskraft, Informiertheit 
+            und die Bereitschaft, Verantwortung für die Konsequenzen zu tragen.
           </p>
           <p>
             Diese Spannung ist kein deutsches Sonderproblem, aber sie wird in Deutschland 
             besonders intensiv erlebt. Die „Kultur der Zurückhaltung" – wie sie lange die 
             deutsche Außenpolitik prägte – ist ein direktes Ergebnis der historischen 
             Erfahrung. Die Frage ist, ob diese Zurückhaltung in einer veränderten 
-            geopolitischen Lage noch angemessen ist.
+            geopolitischen Lage noch angemessen ist oder ob sie zur bequemen Ausrede 
+            für Passivität geworden ist.
           </p>
 
           <h2>Die Lehre des „Gerechten Krieges"</h2>
@@ -46,8 +49,8 @@ const Ethik = () => (
           </p>
           <ul>
             <li><strong>Gerechter Grund</strong> (causa iusta) – z.B. Schutz vor Aggression oder Völkermord</li>
-            <li><strong>Legitime Autorität</strong> – Entscheidung durch eine legitimierte Instanz (z.B. UN-Sicherheitsrat)</li>
-            <li><strong>Richtige Absicht</strong> – Ziel muss die Wiederherstellung des Friedens sein, nicht Eroberung oder Vergeltung</li>
+            <li><strong>Legitime Autorität</strong> – Entscheidung durch eine legitimierte Instanz</li>
+            <li><strong>Richtige Absicht</strong> – Ziel muss die Wiederherstellung des Friedens sein</li>
             <li><strong>Verhältnismäßigkeit</strong> – Die erwarteten Vorteile müssen die Schäden überwiegen</li>
             <li><strong>Letztes Mittel</strong> (ultima ratio) – Alle friedlichen Optionen müssen ausgeschöpft sein</li>
             <li><strong>Erfolgsaussicht</strong> – Ein realistischer Weg zum Erfolg muss erkennbar sein</li>
@@ -75,7 +78,8 @@ const Ethik = () => (
             Das Kunduz-Bombardement von 2009 illustriert dieses Dilemma: Der deutsche Oberst Klein 
             ordnete den Luftangriff an, weil er eine unmittelbare Bedrohung für seine Soldaten sah. 
             Dabei starben auch Zivilisten. War die Entscheidung moralisch vertretbar? Die deutsche 
-            Justiz sprach ihn frei. Die Familien der Opfer sehen das anders.
+            Justiz sprach ihn frei. Die Familien der Opfer sehen das anders. Es gibt keine Position 
+            in diesem Dilemma, die frei von moralischem Risiko ist.
           </p>
           <p>
             In der philosophischen Debatte gibt es zwei grundlegende Positionen: Der 
@@ -83,7 +87,8 @@ const Ethik = () => (
             wenn eine Intervention mehr Leben rettet als sie kostet, ist sie gerechtfertigt. 
             Die <strong>Deontologie</strong> dagegen betont, dass bestimmte Handlungen (z.B. 
             das gezielte Töten von Zivilisten) grundsätzlich verwerflich sind, unabhängig 
-            vom Ergebnis.
+            vom Ergebnis. Beide Positionen haben ihre Berechtigung – und beide stoßen 
+            in der Praxis an Grenzen.
           </p>
 
           <h2>Pazifismus als ethische Position</h2>
@@ -100,6 +105,11 @@ const Ethik = () => (
             spricht vom „vorrangig gewaltfreien Handeln" – Gewalt als allerletztes Mittel, 
             aber nicht grundsätzlich ausgeschlossen.
           </p>
+
+          <QuoteBlock
+            quote="Frieden ist nicht alles, aber ohne Frieden ist alles nichts."
+            author="Willy Brandt"
+          />
 
           <h2>Die Frage der moralischen Konsistenz</h2>
           <p>
@@ -128,19 +138,40 @@ const Ethik = () => (
             Ethisch konsequent wäre es, keine Intervention zu beginnen, für die man nicht 
             bereit ist, auch die langfristigen Konsequenzen zu tragen. Doch genau diese 
             Bereitschaft fehlt häufig – die politische Aufmerksamkeitsspanne ist kürzer 
-            als die Zeit, die Stabilisierung erfordert.
+            als die Zeit, die Stabilisierung erfordert. Die Ethik der Nachsorge (ius post 
+            bellum) ist ein noch junges, aber zunehmend wichtiges Feld der philosophischen 
+            Debatte.
+          </p>
+
+          <h2>Die Verantwortung des Einzelnen</h2>
+          <p>
+            Neben der staatlichen Ebene stellt sich auch die Frage der individuellen 
+            Verantwortung. Soldatinnen und Soldaten stehen vor moralischen Entscheidungen, 
+            die kein Ausbildungshandbuch vollständig abdecken kann. Wann darf geschossen 
+            werden? Wie geht man mit der Gewissheit um, dass die eigene Handlung 
+            möglicherweise Unschuldige getroffen hat? Diese Fragen begleiten viele 
+            Veteranen ein Leben lang.
+          </p>
+          <p>
+            Auch die Zivilgesellschaft trägt Verantwortung: Wähler mandatieren Regierungen, 
+            die über Einsätze entscheiden. Steuerzahler finanzieren diese Einsätze. Und 
+            als Mitglieder einer demokratischen Gesellschaft sind alle Bürgerinnen und 
+            Bürger mitverantwortlich für die Entscheidungen, die in ihrem Namen getroffen 
+            werden. Diese Mitverantwortung ernst zu nehmen, bedeutet, sich zu informieren 
+            und eine fundierte Position zu entwickeln – genau das, was diese Analyse 
+            ermöglichen soll.
           </p>
         </Prose>
       </ContentSection>
 
-      <MilitaryDivider />
+      <ModernDivider />
 
       <ContentSection className="mt-4">
         <div className="flex justify-between">
-          <Link to="/contra" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/contra" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             <ArrowLeft className="h-4 w-4" /> Contra-Argumente
           </Link>
-          <Link to="/folgen" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/folgen" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             Folgen <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

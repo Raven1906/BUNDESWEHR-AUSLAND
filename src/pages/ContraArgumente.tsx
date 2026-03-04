@@ -1,18 +1,20 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox, MilitaryDivider } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, InfoBox, ModernDivider } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ArgumentHeader = ({ num, title }: { num: number; title: string }) => (
   <motion.div 
-    initial={{ opacity: 0, x: -15 }}
+    initial={{ opacity: 0, x: -12 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    className="flex items-center gap-3 mt-14 mb-4"
+    className="flex items-center gap-3 mt-14 mb-5"
   >
-    <span className="bw-badge !bg-contra !text-contra-foreground">{String(num).padStart(2, '0')}</span>
-    <h2 className="font-tactical text-2xl font-semibold text-foreground tracking-[0.12em] !border-0 !pl-0 !mt-0 !mb-0">{title}</h2>
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-contra/10 border border-contra/20 text-contra text-sm font-heading font-bold">
+      {String(num).padStart(2, '0')}
+    </span>
+    <h2 className="font-heading text-2xl font-bold text-foreground !border-0 !pl-0 !mt-0 !mb-0">{title}</h2>
   </motion.div>
 );
 
@@ -21,10 +23,10 @@ const ContraArgumente = () => (
     <PageHeader
       chapter="Kapitel 4"
       title="Argumente gegen Auslandseinsätze"
-      subtitle="Sieben zentrale Argumente, die gegen eine militärische Beteiligung Deutschlands im Ausland sprechen."
+      subtitle="Sieben zentrale Argumente, die gegen eine militärische Beteiligung Deutschlands im Ausland sprechen – mit Gegenperspektiven."
     />
 
-    <div className="py-12 sm:py-16">
+    <div className="py-14 sm:py-20">
       <ContentSection>
         <Prose>
           <ArgumentHeader num={1} title="Gefahr für Soldatinnen und Soldaten" />
@@ -38,13 +40,15 @@ const ContraArgumente = () => (
             Die Dunkelziffer bei PTBS ist hoch: Experten schätzen, dass bis zu 25% der 
             Afghanistan-Rückkehrer unter psychischen Folgen leiden, viele davon unbehandelt. 
             Die gesellschaftliche Anerkennung dieser Opfer ist in Deutschland deutlich geringer 
-            als in vergleichbaren Ländern.
+            als in vergleichbaren Ländern. Veteranen berichten von Unverständnis, mangelnder 
+            Unterstützung und dem Gefühl, von der Gesellschaft vergessen zu werden.
           </p>
           <InfoBox variant="contra" title="Beispiel: Karfreitagsgefecht 2010">
             <p>Das Karfreitagsgefecht 2010 in Afghanistan war der verlustreichste Kampfeinsatz 
             der Bundeswehr seit dem Zweiten Weltkrieg. Drei Soldaten fielen, acht wurden verwundet. 
             Die psychischen Folgen begleiteten die Überlebenden jahrelang. Mehrere Beteiligte 
-            berichteten später öffentlich über ihre PTBS-Erkrankungen.</p>
+            berichteten später öffentlich über ihre PTBS-Erkrankungen und die mangelnde 
+            Unterstützung durch Bundeswehr und Gesellschaft.</p>
           </InfoBox>
           <p>
             <strong>Gegenperspektive:</strong> Soldaten treten freiwillig in den Dienst und werden 
@@ -63,7 +67,7 @@ const ContraArgumente = () => (
             Die Bilanz ist ernüchternd: Eine Studie des Zentrums für Internationale 
             Friedenseinsätze (ZIF) kommt zu dem Schluss, dass nur etwa ein Drittel aller 
             internationalen Friedenseinsätze ihre Kernziele vollständig erreicht hat. Die 
-            Mehrheit erzielte bestenfalls Teilerfolge.
+            Mehrheit erzielte bestenfalls Teilerfolge – bei enormem Ressourceneinsatz.
           </p>
           <p>
             <strong>Gegenperspektive:</strong> Erfolg lässt sich nicht nur am Endzustand messen. 
@@ -85,7 +89,7 @@ const ContraArgumente = () => (
             nicht enthalten.
           </p>
           <InfoBox variant="contra" title="Kostenvergleich">
-            <ul className="list-disc pl-4 space-y-1">
+            <ul className="list-disc pl-4 space-y-1.5">
               <li>Afghanistan (2001–2021): ca. 12,5 Mrd. €</li>
               <li>Mali (2013–2023): ca. 3,5 Mrd. €</li>
               <li>Kosovo (seit 1999): ca. 4 Mrd. €</li>
@@ -141,14 +145,14 @@ const ContraArgumente = () => (
             Militärische Interventionen, auch wenn sie unter UN-Mandat stattfinden, greifen 
             in die Souveränität anderer Staaten ein. Dies wirft grundsätzliche völkerrechtliche 
             Fragen auf und kann in den betroffenen Ländern als neokoloniale Einmischung 
-            wahrgenommen werden.
+            wahrgenommen werden – mit langfristigen Konsequenzen für das Verhältnis.
           </p>
           <InfoBox variant="contra" title="Beispiel: Mali 2023">
             <p>Die Bundeswehr-Präsenz in Mali wurde von der dortigen Militärjunta zunehmend 
             als unerwünscht betrachtet. 2023 musste die Bundeswehr ihren Einsatz beenden – 
             auf Druck der malischen Regierung, nicht aus eigenem Entschluss. Dieses Beispiel 
             zeigt die Grenzen von Interventionen, die nicht von der lokalen Bevölkerung 
-            getragen werden.</p>
+            und Regierung getragen werden.</p>
           </InfoBox>
           <p>
             <strong>Gegenperspektive:</strong> Souveränität ist kein Freibrief für 
@@ -177,7 +181,7 @@ const ContraArgumente = () => (
         </Prose>
       </ContentSection>
 
-      <MilitaryDivider />
+      <ModernDivider />
 
       <ContentSection>
         <InfoBox variant="contra" title="Zusammenfassung">
@@ -193,10 +197,10 @@ const ContraArgumente = () => (
 
       <ContentSection className="mt-12">
         <div className="flex justify-between">
-          <Link to="/pro" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/pro" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             <ArrowLeft className="h-4 w-4" /> Pro-Argumente
           </Link>
-          <Link to="/ethik" className="flex items-center gap-2 text-sm font-tactical tracking-wider text-muted-foreground hover:text-accent transition-colors">
+          <Link to="/ethik" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
             Ethik <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
