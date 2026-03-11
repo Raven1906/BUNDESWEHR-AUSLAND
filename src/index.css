@@ -171,10 +171,10 @@
   }
 
   .glass-card-hover:hover {
-    background: hsl(var(--card) / 0.9);
-    border-color: hsl(var(--accent) / 0.3);
-    box-shadow: 0 8px 32px -8px hsl(var(--accent) / 0.1);
-    transform: translateY(-2px);
+    background: hsl(var(--card) / 0.95);
+    border-color: hsl(var(--accent) / 0.35);
+    box-shadow: 0 12px 40px -12px hsl(var(--accent) / 0.15), 0 0 0 1px hsl(var(--accent) / 0.1);
+    transform: translateY(-3px);
   }
 
   /* Accent line */
