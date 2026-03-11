@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
-import { PageHeader, ContentSection, Prose, InfoBox, StatCard, ModernDivider, QuoteBlock } from "@/components/ContentSection";
+import { PageHeader, ContentSection, Prose, StatCard, ModernDivider } from "@/components/ContentSection";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Scale, History, MessageSquare, Target, TrendingUp, Shield } from "lucide-react";
+import { ArrowRight, BookOpen, Scale, History, MessageSquare, TrendingUp, Shield, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const chapters = [
@@ -23,18 +23,16 @@ const Index = () => {
       />
 
       {/* Stats */}
-      <div className="border-b border-border/50">
-        <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <StatCard value="30+" label="Jahre Einsatzgeschichte" />
-            <StatCard value="59" label="Gefallene in Afghanistan" />
-            <StatCard value="12,5" label="Mrd. € Afghanistan-Kosten" suffix="Mrd." />
-            <StatCard value="100" label="Mrd. € Sondervermögen" suffix="Mrd." />
-          </div>
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <StatCard value="30+" label="Jahre Einsatzgeschichte" />
+          <StatCard value="59" label="Gefallene in Afghanistan" />
+          <StatCard value="12,5" label="Mrd. € Afghanistan-Kosten" suffix="Mrd." />
+          <StatCard value="100" label="Mrd. € Sondervermögen" suffix="Mrd." />
         </div>
       </div>
 
-      <div className="py-14 sm:py-20">
+      <div className="py-12 sm:py-16">
         <ContentSection>
           <Prose>
             <h2>Was sind Auslandseinsätze?</h2>
@@ -142,61 +140,54 @@ const Index = () => {
 
         {/* Chapters */}
         <ContentSection>
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             {chapters.map((ch, i) => (
               <motion.div
                 key={ch.path}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
+                transition={{ delay: i * 0.04 }}
               >
                 <Link
                   to={ch.path}
-                  className="group flex items-start gap-4 rounded-xl p-5 glass-card-hover"
+                  className="group flex items-center gap-4 rounded-lg px-4 py-3.5 transition-colors hover:bg-muted/50"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 border border-accent/20 text-accent group-hover:bg-accent/20 transition-colors">
-                    <ch.icon className="h-5 w-5" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground group-hover:text-accent group-hover:bg-accent/10 transition-colors">
+                    <ch.icon className="h-4 w-4" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-heading text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
+                    <h3 className="text-sm font-semibold text-foreground font-sans-heading">
                       {ch.label}
                     </h3>
-                    <p className="text-sm text-muted-foreground mt-1">{ch.desc}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{ch.desc}</p>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-3 transition-all group-hover:text-accent group-hover:translate-x-1" />
+                  <ArrowRight className="h-3.5 w-3.5 text-muted-foreground/40 shrink-0 transition-all group-hover:text-accent group-hover:translate-x-0.5" />
                 </Link>
               </motion.div>
             ))}
           </div>
         </ContentSection>
 
-        <ContentSection className="mt-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+        <ContentSection className="mt-8">
+          <Link
+            to="/reflexion"
+            className="group flex items-center justify-between rounded-lg border border-accent/20 bg-accent/5 px-5 py-4 transition-all hover:border-accent/40 hover:bg-accent/8"
           >
-            <Link
-              to="/reflexion"
-              className="group relative flex items-center justify-between rounded-xl border border-accent/30 bg-accent/5 p-7 transition-all duration-300 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <span className="chapter-badge text-[11px]">
-                  <Target className="h-3 w-3" />
-                  Interaktiv
-                </span>
-                <h3 className="font-heading text-xl font-bold text-foreground mt-3">
-                  Pro & Contra – Reflexionstool
-                </h3>
-                <p className="text-sm text-muted-foreground mt-1.5">
-                  25 Fragen zur eigenen Positionsbestimmung mit automatischer Auswertung
-                </p>
+            <div>
+              <div className="flex items-center gap-2 mb-1.5">
+                <Target className="h-3.5 w-3.5 text-accent" />
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-accent font-sans-heading">Interaktiv</span>
               </div>
-              <ArrowRight className="h-5 w-5 text-accent shrink-0 transition-transform group-hover:translate-x-1 relative" />
-            </Link>
-          </motion.div>
+              <h3 className="text-sm font-semibold text-foreground font-sans-heading">
+                Pro & Contra – Reflexionstool
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                25 Fragen zur eigenen Positionsbestimmung
+              </p>
+            </div>
+            <ArrowRight className="h-4 w-4 text-accent shrink-0 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </ContentSection>
       </div>
     </Layout>
