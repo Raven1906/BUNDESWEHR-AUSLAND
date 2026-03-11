@@ -143,16 +143,16 @@ export const InfoBox = ({
 
 export const StatCard = ({ value, label, suffix }: { value: string; label: string; suffix?: string }) => (
   <motion.div
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, scale: 0.95 }}
+    whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.4 }}
+    transition={{ duration: 0.5, type: "spring" }}
     className="modern-stat"
   >
-    <div className="text-3xl font-heading font-bold text-accent">
-      {value}{suffix && <span className="text-lg text-muted-foreground ml-0.5">{suffix}</span>}
+    <div className="text-3xl font-heading font-bold text-accent tracking-tight">
+      {value}{suffix && <span className="text-base text-muted-foreground ml-0.5">{suffix}</span>}
     </div>
-    <div className="text-xs text-muted-foreground mt-2 font-medium">{label}</div>
+    <div className="text-[11px] uppercase tracking-wider text-muted-foreground mt-2.5 font-medium">{label}</div>
   </motion.div>
 );
 

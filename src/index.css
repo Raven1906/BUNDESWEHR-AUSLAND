@@ -202,18 +202,28 @@
 
   /* Stat card */
   .modern-stat {
-    @apply rounded-xl p-5 text-center glass-card;
+    @apply rounded-xl p-6 text-center glass-card;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .modern-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px hsl(var(--accent) / 0.12);
   }
   .modern-stat::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
+    left: 20%;
+    right: 20%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.5), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.6), transparent);
+    transition: all 0.3s ease;
+  }
+  .modern-stat:hover::after {
+    left: 10%;
+    right: 10%;
   }
 
   /* Divider */

@@ -138,17 +138,6 @@ const Index = () => {
           </Prose>
         </ContentSection>
 
-        <ContentSection className="mt-12">
-          <InfoBox variant="warning" title="Ziel dieser Analyse">
-            <p>
-              Diese Analyse verfolgt keinen aktivistischen Zweck. Sie bietet eine strukturierte, 
-              ausgewogene Argumentationsbasis – damit Sie sich auf Grundlage fundierter Informationen 
-              eine eigene Meinung bilden können. Jedes Argument wird erklärt, mit Beispielen belegt 
-              und durch mögliche Gegenargumente eingeordnet.
-            </p>
-          </InfoBox>
-        </ContentSection>
-
         <ModernDivider label="Kapitelübersicht" />
 
         {/* Chapters */}
